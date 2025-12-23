@@ -14,19 +14,45 @@
  * }
  */
 class Solution {
-    List l;
+    // List l;
     public List<Integer> postorderTraversal(TreeNode root) {
-        if(l==null)
+        List<Integer> li=new ArrayList<>();
+        Stack<TreeNode> st=new Stack<>();
+        if(root==null)
         {
-            l=new ArrayList<>();
+            return li;
         }
-        if(root!=null)
+        st.push(root);
+        while(!st.isEmpty())
         {
-            postorderTraversal(root.left);
-            postorderTraversal(root.right);
-            l.add(root.val);
+            TreeNode cur=st.pop();
+            li.add(cur.val);
+
+            if(cur.left!=null)
+            {
+                st.push(cur.left);
+            }
+
+            if(cur.right!=null)
+            {
+                st.push(cur.right);
+            }
         }
-        return l;
+
+        Collections.reverse(li);
+
+        return li;
+        // if(l==null)
+        // {
+        //     l=new ArrayList<>();
+        // }
+        // if(root!=null)
+        // {
+        //     postorderTraversal(root.left);
+        //     postorderTraversal(root.right);
+        //     l.add(root.val);
+        // }
+        // return l;
         
     }
 }
