@@ -32,24 +32,24 @@ class Solution {
         // return dummy.next;
 
         ListNode dummy=new ListNode(-1);
-        ListNode curr=dummy;
+        ListNode cur=dummy;
         while(list1!=null&&list2!=null)
         {
             if(list1.val>list2.val)
             {
-                curr.next=list2;
+                cur.next=list2;
                 list2=list2.next;
             }
+
             else
             {
-                curr.next=list1;
+                cur.next=list1;
                 list1=list1.next;
             }
-            curr=curr.next;
+            cur=cur.next;
+            
         }
-
-        curr.next=(list1!=null)?list1:list2;
-
+        cur.next=(list1!=null)?list1:list2;
 
         return dummy.next;
     }
